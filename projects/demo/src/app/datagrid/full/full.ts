@@ -4,8 +4,8 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { Component } from '@angular/core';
-import { ClrDatagridStateInterface } from '@clr/angular';
+import { ChangeDetectorRef, Component, ViewChild } from '@angular/core';
+import { ClrDatagrid, ClrDatagridStateInterface } from '@clr/angular';
 import { FetchResult, Inventory } from '../inventory/inventory';
 import { User } from '../inventory/user';
 import { ColorFilter } from '../utils/color-filter';
@@ -44,7 +44,7 @@ export class DatagridFullDemo {
   pokemonComparator = new PokemonComparator();
   pokemonFilter = new PokemonFilter();
 
-  constructor(private inventory: Inventory) {
+  constructor(private inventory: Inventory, private cdr: ChangeDetectorRef) {
     this.reset();
   }
 
@@ -104,5 +104,21 @@ export class DatagridFullDemo {
 
   clrDgActionOverflowOpenChangeFn($event: boolean) {
     console.log('clrDgActionOverflowOpenChange event', $event);
+  }
+
+  @ViewChild(ClrDatagrid) datagrid: ClrDatagrid;
+
+  ngAfterViewChecked() {
+    if (!this.datagrid) {
+      return;
+    }
+    this.datagrid.items.smartenUp();
+
+    this.datagrid.items.all = this.users;
+
+    this.datagrid.items.change.subscribe(x => {
+      console.log('change', x);
+      this.users = x.slice();
+    });
   }
 }

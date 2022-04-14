@@ -43,9 +43,10 @@ import { DatagridTestCasesDemo } from './test-cases/test-cases';
 import { ColorFilter } from './utils/color-filter';
 import { DatagridDetailDemo } from './detail/detail';
 import { DatagridConditionalSelectionsDemo } from './conditional-selection/conditional-selection';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 @NgModule({
-  imports: [CommonModule, FormsModule, ClarityModule, ROUTING, UtilsDemoModule],
+  imports: [CommonModule, FormsModule, ClarityModule, ROUTING, UtilsDemoModule, ScrollingModule],
   declarations: [
     DatagridDemo,
     DatagridBasicStructureDemo,
