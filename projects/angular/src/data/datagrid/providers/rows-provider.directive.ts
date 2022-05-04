@@ -10,6 +10,9 @@ import { ClrDatagrid } from '../datagrid';
 @Directive({
   selector: '[clrRowProvider]',
   exportAs: 'clrRowsProvider',
+  host: {
+    '[class.datagrid-row-provider]': 'true',
+  },
 })
 export class ClrRowsProvider {
   public items: any[] = [];

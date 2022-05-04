@@ -21,11 +21,13 @@ export class DatagridPaginationScrollingDemo {
   datagrid: ClrDatagrid;
 
   users: User[];
+  users2: User[];
 
   constructor(inventory: Inventory, private cdr: ChangeDetectorRef) {
     inventory.size = 50000;
     inventory.reset();
     this.users = inventory.all;
+    this.users2 = inventory.all;
   }
 
   get console() {
