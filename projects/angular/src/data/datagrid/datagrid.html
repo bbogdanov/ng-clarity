@@ -70,7 +70,7 @@
             </div>
           </div>
           <ng-container #displayedRows></ng-container>
-          <ng-content select="cdk-virtual-scroll-viewport"></ng-content>
+          <ng-content select="[clrRowProvider]"></ng-content>
           <!-- Custom placeholder overrides the default empty one -->
           <ng-content select="clr-dg-placeholder"></ng-content>
           <clr-dg-placeholder *ngIf="!placeholder"></clr-dg-placeholder>

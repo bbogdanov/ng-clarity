@@ -68,6 +68,7 @@ import {
   viewColumnsIcon,
   windowCloseIcon,
 } from '@cds/core/icon';
+import { ClrRowsProvider } from './providers/rows-provider.directive';
 
 export const CLR_DATAGRID_DIRECTIVES: Type<any>[] = [
   // Core
@@ -95,6 +96,7 @@ export const CLR_DATAGRID_DIRECTIVES: Type<any>[] = [
   ClrIfDetail,
   ClrDatagridDetailHeader,
   ClrDatagridDetailBody,
+  ClrRowsProvider,
   WrappedCell,
   WrappedColumn,
   WrappedRow,

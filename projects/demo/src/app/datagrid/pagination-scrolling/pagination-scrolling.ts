@@ -17,7 +17,9 @@ import { User } from '../inventory/user';
   styleUrls: ['../datagrid.demo.scss'],
 })
 export class DatagridPaginationScrollingDemo {
-  @ViewChild(ClrDatagrid) datagrid: ClrDatagrid;
+  @ViewChild(ClrDatagrid)
+  datagrid: ClrDatagrid;
+
   users: User[];
 
   constructor(inventory: Inventory, private cdr: ChangeDetectorRef) {
@@ -26,14 +28,11 @@ export class DatagridPaginationScrollingDemo {
     this.users = inventory.all;
   }
 
-  ngAfterViewInit() {
-    this.datagrid.items.smartenUp();
-
-    this.datagrid.items.all = this.users;
-
-    this.datagrid.items.change.subscribe(x => {
-      console.log('change', x);
-      this.users = x.slice();
-    });
+  get console() {
+    return {
+      log: asdf => {
+        console.log(asdf);
+      },
+    };
   }
 }

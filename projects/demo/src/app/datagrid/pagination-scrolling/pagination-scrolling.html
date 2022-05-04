@@ -11,16 +11,27 @@
     <clr-dg-column>Creation date</clr-dg-column>
     <clr-dg-column>Favorite color</clr-dg-column>
 
-    <cdk-virtual-scroll-viewport itemSize="10" style="height: 100%">
-      <clr-dg-row *cdkVirtualFor="let user of users">
-        <clr-dg-cell>{{user.id}}</clr-dg-cell>
-        <clr-dg-cell>{{user.name}}</clr-dg-cell>
-        <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
-        <clr-dg-cell>
-          <span class="color-square" [style.backgroundColor]="user.color"></span>
-        </clr-dg-cell>
-      </clr-dg-row>
-    </cdk-virtual-scroll-viewport>
+    <div [clrRowProvider]="users" #clrRowsProvider="clrRowsProvider" style="height: 100%">
+      <cdk-virtual-scroll-viewport itemSize="10" style="height: 100%">
+        <clr-dg-row *cdkVirtualFor="let user of clrRowsProvider.items">
+          <clr-dg-cell>{{user.id}}</clr-dg-cell>
+          <clr-dg-cell>{{user.name}}</clr-dg-cell>
+          <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
+          <clr-dg-cell>
+            <span class="color-square" [style.backgroundColor]="user.color"></span>
+          </clr-dg-cell>
+        </clr-dg-row>
+      </cdk-virtual-scroll-viewport>
+    </div>
+
+    <!-- <clr-dg-row *clrDgItems="let user of users" [clrDgItem]="user">
+      <clr-dg-cell>{{user.id}}</clr-dg-cell>
+      <clr-dg-cell>{{user.name}}</clr-dg-cell>
+      <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
+      <clr-dg-cell>
+        <span class="color-square" [style.backgroundColor]="user.color"></span>
+      </clr-dg-cell>
+    </clr-dg-row> -->
 
     <clr-dg-footer>
       {{ users.length }} users
